@@ -54,7 +54,7 @@ const RequestBody = props => {
         </div>)}
         <div className="flex justify-end">
             <Button onClick={_addMore}>
-                Add more
+                Add more body
             </Button>
         </div>
     </div>

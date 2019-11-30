@@ -13,6 +13,7 @@ const Home = props => {
         path: getLocalStorage('path') || '',
         label: getLocalStorage('label') || '',
         data: {},
+        headers: getLocalStorage('headers') || {}
     })
 
     const [_resp, _setResp] = useState(null)
@@ -22,13 +23,14 @@ const Home = props => {
     const _saveRequest = objectValue => _setRequest({ ..._request, ...objectValue })
 
     const _saveRequestToLocal = request => {
-        const { method, url, path, label } = request
+        const { method, url, path, label, headers } = request
         const startQuery = path.indexOf('?')
         const newPath = startQuery >= 0 ? path.substring(0, path.indexOf('?')) : path
         setLocalStorage('method', method)
         setLocalStorage('url', url)
         setLocalStorage('path', newPath)
         setLocalStorage('label', label)
+        setLocalStorage('headers', headers)
     }
 
     const _sendRequest = async () => {

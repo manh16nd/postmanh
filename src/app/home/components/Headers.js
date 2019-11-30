@@ -1,23 +1,39 @@
-import React, { useState, useContext } from 'react'
+import React, { useState, useContext, useEffect } from 'react'
 import Button from '../../shared/components/Button'
 import Input from '../../shared/components/Input'
 import HomeContext from '../context/HomeContext'
 
 const defaultItem = { key: '', value: '' }
 
-const RequestParams = props => {
+const Headers = props => {
     const { setRequest, request } = useContext(HomeContext)
 
     const [_params, _setParams] = useState([defaultItem])
 
+    useEffect(() => {
+        _mapHeaders()
+    }, [])
+
+    const _mapHeaders = () => {
+        const headers = []
+
+        Object.keys(request.headers).forEach(key => {
+            const value = request.headers[key]
+            headers.push({ key, value })
+        })
+
+        _setParams([...headers, _params])
+    }
+
     const _addMore = () => _setParams([..._params, defaultItem])
 
-    const _setQueryString = params => {
-        const qs = params.map(({ key, value }) => `${key}=${value}`).join('&')
-        const { path } = request
-        const startQuery = path.indexOf('?')
-        const newPath = startQuery >= 0 ? path.substring(0, path.indexOf('?')) : path
-        setRequest({ path: `${newPath}${params.length && `?${qs}`}` })
+    const _setBody = body => {
+        const newBody = body.reduce((result, { key, value }) => ({
+            ...result,
+            [key]: value
+        }), {})
+
+        setRequest({ headers: newBody })
     }
 
     const _onChange = (i, key) => value => {
@@ -25,13 +41,13 @@ const RequestParams = props => {
             if (i === j) return { ...item, [key]: value }
             return item
         })
-        _setQueryString(newParams)
+        _setBody(newParams)
         _setParams(newParams)
     }
 
     const _clickRemove = i => () => {
         const newParams = _params.filter((value, j) => i !== j)
-        _setQueryString(newParams)
+        _setBody(newParams)
         _setParams(newParams)
     }
 
@@ -53,10 +69,10 @@ const RequestParams = props => {
         </div>)}
         <div className="flex justify-end">
             <Button onClick={_addMore}>
-                Add more params
+                Add more header
             </Button>
         </div>
     </div>
 }
 
-export default RequestParams
+export default Headers

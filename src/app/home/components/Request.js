@@ -52,6 +52,11 @@ const Request = props => {
                     Body
                 </Button>
             </div>
+            <div className="w-1/2 sm:w-1/2 md:w-1/5 flex items-end pr-2">
+                <Button fullWidth onClick={_changeTab(2)} quited={_tab !== 2}>
+                    Headers
+                </Button>
+            </div>
         </div>
         <RequestMenu menu={_tab} />
     </div>

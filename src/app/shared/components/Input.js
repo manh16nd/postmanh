@@ -12,7 +12,7 @@ const Input = props => {
         <input
             id={id}
             className="block text-white appearance-none bg-gray-700 border border-gray-400 shadow rounded w-full px-4 py-2 focus:outline-none focus:bg-white focus:border-blue-500 focus:text-black"
-            value={value}
+            value={value || ''}
             onChange={_onChange}
             {...inputProps}
         />
