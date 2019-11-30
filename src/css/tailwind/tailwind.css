@@ -11459,6 +11459,52 @@ video {
   z-index: auto !important;
 }
 
+.spinner {
+  position: relative !important;
+  color: transparent !important;
+  pointer-events: none !important;
+}
+
+.spinner::after {
+  content: '' !important;
+  position: absolute !important;
+  top: calc(50% - (1em / 2)) !important;
+  left: calc(50% - (1em / 2)) !important;
+  display: block !important;
+  width: 1em !important;
+  height: 1em !important;
+  border: 2px solid #ff1744 !important;
+  border-radius: 9999px !important;
+  border-right-color: transparent !important;
+  border-top-color: transparent !important;
+  -webkit-animation: spinAround 500ms infinite linear !important;
+          animation: spinAround 500ms infinite linear !important;
+}
+
+@-webkit-keyframes spinAround {
+  from {
+    -webkit-transform: rotate(0deg) !important;
+            transform: rotate(0deg) !important;
+  }
+
+  to {
+    -webkit-transform: rotate(360deg) !important;
+            transform: rotate(360deg) !important;
+  }
+}
+
+@keyframes spinAround {
+  from {
+    -webkit-transform: rotate(0deg) !important;
+            transform: rotate(0deg) !important;
+  }
+
+  to {
+    -webkit-transform: rotate(360deg) !important;
+            transform: rotate(360deg) !important;
+  }
+}
+
 @media (min-width: 640px) {
   .sm\:sr-only {
     position: absolute !important;
@@ -22290,6 +22336,28 @@ video {
 
   .sm\:z-auto {
     z-index: auto !important;
+  }
+
+  .sm\:spinner {
+    position: relative !important;
+    color: transparent !important;
+    pointer-events: none !important;
+  }
+
+  .sm\:spinner::after {
+    content: '' !important;
+    position: absolute !important;
+    top: calc(50% - (1em / 2)) !important;
+    left: calc(50% - (1em / 2)) !important;
+    display: block !important;
+    width: 1em !important;
+    height: 1em !important;
+    border: 2px solid #ff1744 !important;
+    border-radius: 9999px !important;
+    border-right-color: transparent !important;
+    border-top-color: transparent !important;
+    -webkit-animation: spinAround 500ms infinite linear !important;
+            animation: spinAround 500ms infinite linear !important;
   }
 }
 
@@ -33125,6 +33193,28 @@ video {
   .md\:z-auto {
     z-index: auto !important;
   }
+
+  .md\:spinner {
+    position: relative !important;
+    color: transparent !important;
+    pointer-events: none !important;
+  }
+
+  .md\:spinner::after {
+    content: '' !important;
+    position: absolute !important;
+    top: calc(50% - (1em / 2)) !important;
+    left: calc(50% - (1em / 2)) !important;
+    display: block !important;
+    width: 1em !important;
+    height: 1em !important;
+    border: 2px solid #ff1744 !important;
+    border-radius: 9999px !important;
+    border-right-color: transparent !important;
+    border-top-color: transparent !important;
+    -webkit-animation: spinAround 500ms infinite linear !important;
+            animation: spinAround 500ms infinite linear !important;
+  }
 }
 
 @media (min-width: 1024px) {
@@ -43959,6 +44049,28 @@ video {
   .lg\:z-auto {
     z-index: auto !important;
   }
+
+  .lg\:spinner {
+    position: relative !important;
+    color: transparent !important;
+    pointer-events: none !important;
+  }
+
+  .lg\:spinner::after {
+    content: '' !important;
+    position: absolute !important;
+    top: calc(50% - (1em / 2)) !important;
+    left: calc(50% - (1em / 2)) !important;
+    display: block !important;
+    width: 1em !important;
+    height: 1em !important;
+    border: 2px solid #ff1744 !important;
+    border-radius: 9999px !important;
+    border-right-color: transparent !important;
+    border-top-color: transparent !important;
+    -webkit-animation: spinAround 500ms infinite linear !important;
+            animation: spinAround 500ms infinite linear !important;
+  }
 }
 
 @media (min-width: 1280px) {
@@ -54792,5 +54904,27 @@ video {
 
   .xl\:z-auto {
     z-index: auto !important;
+  }
+
+  .xl\:spinner {
+    position: relative !important;
+    color: transparent !important;
+    pointer-events: none !important;
+  }
+
+  .xl\:spinner::after {
+    content: '' !important;
+    position: absolute !important;
+    top: calc(50% - (1em / 2)) !important;
+    left: calc(50% - (1em / 2)) !important;
+    display: block !important;
+    width: 1em !important;
+    height: 1em !important;
+    border: 2px solid #ff1744 !important;
+    border-radius: 9999px !important;
+    border-right-color: transparent !important;
+    border-top-color: transparent !important;
+    -webkit-animation: spinAround 500ms infinite linear !important;
+            animation: spinAround 500ms infinite linear !important;
   }
 }

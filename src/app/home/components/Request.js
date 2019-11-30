@@ -38,7 +38,7 @@ const Request = props => {
                     onClick={sendRequest}
                     disabled={loading}
                 >
-                    Send
+                    {loading ? 'Loading ... ' : 'Send'}
                 </Button>
             </div>
         </div>
