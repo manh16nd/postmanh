@@ -7,6 +7,9 @@ const Header = props => {
             <img src={'/postmanh.svg'} alt="Logo" className="w-10 mr-2" />
             <span className="font-semibold text-xl tracking-tight">Postmanh</span>
         </div>
+        <a href="https://github.com/manh16nd/postmanh" target="_blank" rel="noopener noreferrer">
+            <img src={'/github.png'} alt="Github" className="w-10" />
+        </a>
     </nav>
 }
 
