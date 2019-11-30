@@ -19,16 +19,16 @@ const Request = props => {
             Request
         </div>
         <div className="flex mb-3">
-            <div className="w-full sm:w-full md:w-1/5 pr-2">
+            <div className="w-full sm:w-full lg:w-1/5 pr-2">
                 <Select id="request_method" label="Method" value={request.method} options={methods} onChange={onChange('method')} />
             </div>
-            <div className="w-full sm:w-full md:w-1/5 pr-2">
+            <div className="w-full sm:w-full lg:w-1/5 pr-2">
                 <Input id="request_url" label="URL" value={request.url} onChange={onChange('url')} />
             </div>
-            <div className="w-full sm:w-full md:w-1/5 pr-2">
+            <div className="w-full sm:w-full lg:w-1/5 pr-2">
                 <Input id="request_path" label="Path" value={request.path} onChange={onChange('path')} />
             </div>
-            <div className="w-full sm:w-full md:w-1/5 pr-2">
+            <div className="w-full sm:w-full lg:w-1/5 pr-2">
                 <Input id="request_path" label="Label" value={request.label} onChange={onChange('label')} placeholder="(Optional)" />
             </div>
             <div className="w-full sm:w-full md:w-1/5 flex items-end">
@@ -43,12 +43,12 @@ const Request = props => {
         </div>
         <div className="flex">
             <div className="w-1/2 sm:w-1/2 md:w-1/5 flex items-end pr-2">
-                <Button fullWidth onClick={_changeTab(0)} quited={_tab === 0}>
+                <Button fullWidth onClick={_changeTab(0)} quited={_tab !== 0}>
                     Params
                 </Button>
             </div>
             <div className="w-1/2 sm:w-1/2 md:w-1/5 flex items-end pr-2">
-                <Button fullWidth onClick={_changeTab(1)} quited={_tab === 1}>
+                <Button fullWidth onClick={_changeTab(1)} quited={_tab !== 1}>
                     Body
                 </Button>
             </div>
