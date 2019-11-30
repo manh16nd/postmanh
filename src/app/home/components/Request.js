@@ -8,7 +8,7 @@ import RequestMenu from './RequestMenu'
 
 const Request = props => {
     const { request, setRequest, sendRequest } = useContext(HomeContext)
-    const [_tab, _setTab] = useState(1)
+    const [_tab, _setTab] = useState(0)
 
     const onChange = key => value => setRequest({ [key]: value })
 
