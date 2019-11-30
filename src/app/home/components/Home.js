@@ -16,6 +16,8 @@ const Home = props => {
         headers: getLocalStorage('headers') || {}
     })
 
+    const [_loading, _setLoading] = useState(false)
+
     const [_resp, _setResp] = useState(null)
 
     const [_err, _setErr] = useState(null)
@@ -39,17 +41,19 @@ const Home = props => {
         _saveRequestToLocal(_request)
         _setResp(null)
         _setErr(null)
-        console.log(req)
+        _setLoading(true)
         try {
             const data = await createApiRequest(req)
+            _setLoading(false)
             _setResp(data)
         } catch (err) {
             _setErr(err)
+            _setLoading(false)
             console.log(err)
         }
     }
 
-    return <HomeProvider value={{ request: _request, setRequest: _saveRequest, sendRequest: _sendRequest }}>
+    return <HomeProvider value={{ request: _request, setRequest: _saveRequest, sendRequest: _sendRequest, loading: _loading }}>
         <Request />
         <Data resp={_resp} />
         <Err err={_err} />

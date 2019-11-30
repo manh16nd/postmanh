@@ -7,7 +7,7 @@ import Button from '../../shared/components/Button'
 import RequestMenu from './RequestMenu'
 
 const Request = props => {
-    const { request, setRequest, sendRequest } = useContext(HomeContext)
+    const { request, setRequest, sendRequest, loading } = useContext(HomeContext)
     const [_tab, _setTab] = useState(0)
 
     const onChange = key => value => setRequest({ [key]: value })
@@ -36,6 +36,7 @@ const Request = props => {
                     fullWidth
                     className="py-2 border border-blue-500 font-bold"
                     onClick={sendRequest}
+                    disabled={loading}
                 >
                     Send
                 </Button>
