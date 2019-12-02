@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom'
 import App from './app/App'
 import * as serviceWorker from './serviceWorker'
 import './css/tailwind/tailwind.css'
+import './css/App.css'
 import { BrowserRouter } from 'react-router-dom'
 
 ReactDOM.render(<BrowserRouter>
