@@ -40,10 +40,10 @@ const Home = props => {
     const _parseData = (data, type) => {
         if (type === urlencoded) return data
         if (type === jsonType) {
-            const d = data.replace(/\n/g, '')
+            const d = (data || '').replace(/\n/g, '')
             try {
                 const data = JSON.parse(d)
-                return data 
+                return data
             } catch (e) {
                 alert('JSON invalid')
                 return {}
