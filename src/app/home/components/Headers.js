@@ -10,10 +10,6 @@ const Headers = props => {
 
     const [_params, _setParams] = useState([defaultItem])
 
-    useEffect(() => {
-        _mapHeaders()
-    }, [])
-
     const _mapHeaders = () => {
         const headers = []
 
@@ -24,6 +20,10 @@ const Headers = props => {
 
         _setParams([...headers, _params])
     }
+
+    useEffect(() => {
+        _mapHeaders()
+    }, [])
 
     const _addMore = () => _setParams([..._params, defaultItem])
 

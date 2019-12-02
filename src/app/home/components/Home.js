@@ -5,6 +5,7 @@ import createApiRequest from '../../../services/api/createApiRequest'
 import Data from './Data'
 import { setLocalStorage, getLocalStorage } from '../../../services/localStorage'
 import Err from './Err'
+import { urlencoded, jsonType } from '../static/dataTypes';
 
 const Home = props => {
     const [_request, _setRequest] = useState({
@@ -13,7 +14,8 @@ const Home = props => {
         path: getLocalStorage('path') || '',
         label: getLocalStorage('label') || '',
         data: {},
-        headers: getLocalStorage('headers') || {}
+        headers: getLocalStorage('headers') || {},
+        type: 'json',
     })
 
     const [_loading, _setLoading] = useState(false)
@@ -35,9 +37,31 @@ const Home = props => {
         setLocalStorage('headers', headers)
     }
 
+    const _parseData = (data, type) => {
+        if (type === urlencoded) return data
+        if (type === jsonType) {
+            const d = data.replace(/\n/g, '')
+            try {
+                const data = JSON.parse(d)
+                return data 
+            } catch (e) {
+                alert('JSON invalid')
+                return {}
+            }
+        }
+
+        const formData = new FormData()
+        Object.keys(data).forEach(key => {
+            const value = data[key]
+            formData.append(key, value)
+        })
+        return formData
+    }
+
     const _sendRequest = async () => {
         const url = `${_request.url}${_request.path}`
-        const req = { ..._request, url }
+        const data = _parseData(_request.data, _request.type)
+        const req = { ..._request, url, data }
         _saveRequestToLocal(_request)
         _setResp(null)
         _setErr(null)

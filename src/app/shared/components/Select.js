@@ -1,11 +1,11 @@
 import React from 'react'
 
 const Select = props => {
-    const { options, value, label, id } = props
+    const { options, value, label, id, className } = props
 
     const onChange = e => props.onChange(e.target.value)
 
-    return <div>
+    return <div className={className}>
         {!!label && <label className="text-blue-500 block" htmlFor={id}>{label}</label>}
         <select
             value={value}
